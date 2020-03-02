@@ -1,6 +1,6 @@
 <div id="app-wrapper">
 
-  <mat-toolbar id="app-bar" color="primary" class="mat-elevation-z6">
+  <mat-toolbar id="app-bar"  class="mat-elevation-z6">
     <button mat-button class="toolbar-button" (click)="sidenav.toggle()">
       <mat-icon *ngIf="sidenav.opened">chevron_left</mat-icon>
       <mat-icon *ngIf="!sidenav.opened">menu</mat-icon>
@@ -11,8 +11,8 @@
     <span class="toolbar-spacer"></span>
 
     <mat-menu #userMenu="matMenu" [overlapTrigger]="false" class="sidenav">
-      <button mat-menu-item (click)="changeUser(0)">John Doe</button>
-      <button mat-menu-item (click)="changeUser(1)">Max Mustermann</button>
+      <button mat-menu-item (click)="changeUser(0)"> Ozay TUNCTAN</button>
+      <button mat-menu-item (click)="changeUser(1)"> Yağmur TUNCTAN</button>
     </mat-menu>
     <button mat-button class="toolbar-button" [matMenuTriggerFor]="userMenu">
       <mat-icon>account_circle</mat-icon>
@@ -28,8 +28,8 @@
     </mat-sidenav>
 
     <article>
-      <h2>Translator tests</h2>
-      <h3>Using pipe</h3>
+      <h2>Ozay TUNCTAN MAIN CONTENT tests</h2>
+      <!-- <h3>Using pipe</h3>
       <h4>without params</h4>
       <p>{{ 'HELLO_WORLD' | translate }}</p>
 
@@ -55,32 +55,23 @@
       <months></months>
 
       <h3 style="margin-top: 50px">Using pipe with object parameter</h3>
-      <p>{{ 'FUN' | translate: { type: 'joke' } }}</p>
+      <p>{{ 'FUN' | translate: { type: 'joke' } }}</p> -->
     </article>
 
     <footer>
       <div class="projects">
         <div class="this">
           <h4>angular-translator-demo</h4>
-          <p>
-            This project is maintained by
-            <a class="grey-text text-lighten-4" href="https://github.com/tflori">tflori</a> and is demonstrating the use
-            of <a class="grey-text text-lighten-2" href="https://tflori.github.io/angular-translator">angular-translator</a>.
-            It is using angular version {{ version.full }}.
-          </p>
-        </div>
         <div class="other">
           <h4>Other projects</h4>
           <ul>
-            <li><a href="https://tflori.github.io/orm/">tflori/orm</a></li>
-            <li><a class="grey-text text-lighten-2" href="https://tflori.github.io/verja">tflori/verja</a></li>
-            <li><a class="grey-text text-lighten-2" href="https://getopt-php.github.io/getopt-php">ulrichsg/getopt-php</a></li>
+            <li><a href="https://github.com/ozaytunctan/ng-complete-guide-server">Ng Complete Guide</a></li>
           </ul>
         </div>
       </div>
+      </div>
       <div class="footer-copyright">
-        © 2017 Thomas Flori
-        <a class="github-link" href="https://github.com/tflori/angular-translator-demo">View on <b>GitHub</b></a>
+        © {{nowYear}} Ozay TUNCTAN
       </div>
     </footer>
   </mat-sidenav-container>

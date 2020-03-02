@@ -22,6 +22,7 @@ $app-bar-large: 64px;
   z-index: 10;
   position: fixed;
   top: 0;
+  background-color: #1976d2;
 
   &.mat-toolbar {
     min-height: $app-bar-small;
@@ -131,7 +132,7 @@ article {
 }
 
 footer {
-  background-color: mat-color($app-primary);
+  background-color: #1976d2;
   color: #ffffff;
   font-weight: 300;
 

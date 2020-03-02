@@ -1,5 +1,5 @@
 import { MediaMatcher } from '@angular/cdk/layout';
-import { ChangeDetectorRef, Component, Injector, VERSION } from '@angular/core';
+import { ChangeDetectorRef, Component, Injector, VERSION,OnInit } from '@angular/core';
 
 import {Translator, TranslatorContainer} from 'angular-translator';
 
@@ -8,7 +8,7 @@ import {Translator, TranslatorContainer} from 'angular-translator';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   private static users = [
     {
       name: 'John Doe',
@@ -30,6 +30,7 @@ export class AppComponent {
 
   private mobileQuery: MediaQueryList;
   private _mobileQueryListener: () => void;
+  nowYear:string;
 
   constructor(private translator: Translator,
               public translatorContainer: TranslatorContainer,
@@ -60,6 +61,10 @@ export class AppComponent {
     });
   }
 
+  ngOnInit(){
+    this.nowYear=new Date().getFullYear()+"";
+  }
+
   public changeUser(p?: number) {
     p = p !== undefined ? p : AppComponent.users.indexOf(this.user) + 1;
 
@@ -69,6 +74,7 @@ export class AppComponent {
 
     this.user = AppComponent.users[p];
   }
+  
 
   public isScreenSmall(): boolean {
     return this.mobileQuery.matches;
