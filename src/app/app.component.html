@@ -1,0 +1,87 @@
+<div id="app-wrapper">
+
+  <mat-toolbar id="app-bar" color="primary" class="mat-elevation-z6">
+    <button mat-button class="toolbar-button" (click)="sidenav.toggle()">
+      <mat-icon *ngIf="sidenav.opened">chevron_left</mat-icon>
+      <mat-icon *ngIf="!sidenav.opened">menu</mat-icon>
+    </button>
+
+    <span id="app-title">{{title}}</span>
+
+    <span class="toolbar-spacer"></span>
+
+    <mat-menu #userMenu="matMenu" [overlapTrigger]="false" class="sidenav">
+      <button mat-menu-item (click)="changeUser(0)">John Doe</button>
+      <button mat-menu-item (click)="changeUser(1)">Max Mustermann</button>
+    </mat-menu>
+    <button mat-button class="toolbar-button" [matMenuTriggerFor]="userMenu">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav class="app-sidenav"
+                 [mode]="isScreenSmall() ? 'over' : 'side'"
+                 [opened]="!isScreenSmall()"
+                 fixedInViewport="true" [fixedTopGap]="isScreenSmall() ? 56 : 64">
+      <app-menu></app-menu>
+    </mat-sidenav>
+
+    <article>
+      <h2>Translator tests</h2>
+      <h3>Using pipe</h3>
+      <h4>without params</h4>
+      <p>{{ 'HELLO_WORLD' | translate }}</p>
+
+      <h4>with static parameter</h4>
+      <p>{{ 'GREETING' | translate: { name: 'John' } }}</p>
+      <p>{{ 'NEW_MESSAGES' | translate : { count: 42 } }}</p>
+
+      <h4>with dynamic parameters</h4>
+      <p>{{ 'LOGIN' | translate: user }}</p>
+
+      <h3 style="margin-top: 50px">Using component</h3>
+      <h4>without params</h4>
+      <p translate="HELLO_WORLD">loading...</p>
+
+      <h4>with static parameters</h4>
+      <p translate="GREETING" [translateParams]="{ name: 'John' }"></p>
+      <p translate="NEW_MESSAGES" [translateParams]="{ count: 0 }"></p>
+
+      <h4>with dynamic parameters</h4>
+      <p translate="LOGIN" [translateParams]="user"></p>
+
+      <h3 style="margin-top: 50px">Using another component with different provider</h3>
+      <months></months>
+
+      <h3 style="margin-top: 50px">Using pipe with object parameter</h3>
+      <p>{{ 'FUN' | translate: { type: 'joke' } }}</p>
+    </article>
+
+    <footer>
+      <div class="projects">
+        <div class="this">
+          <h4>angular-translator-demo</h4>
+          <p>
+            This project is maintained by
+            <a class="grey-text text-lighten-4" href="https://github.com/tflori">tflori</a> and is demonstrating the use
+            of <a class="grey-text text-lighten-2" href="https://tflori.github.io/angular-translator">angular-translator</a>.
+            It is using angular version {{ version.full }}.
+          </p>
+        </div>
+        <div class="other">
+          <h4>Other projects</h4>
+          <ul>
+            <li><a href="https://tflori.github.io/orm/">tflori/orm</a></li>
+            <li><a class="grey-text text-lighten-2" href="https://tflori.github.io/verja">tflori/verja</a></li>
+            <li><a class="grey-text text-lighten-2" href="https://getopt-php.github.io/getopt-php">ulrichsg/getopt-php</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        © 2017 Thomas Flori
+        <a class="github-link" href="https://github.com/tflori/angular-translator-demo">View on <b>GitHub</b></a>
+      </div>
+    </footer>
+  </mat-sidenav-container>
+</div>
